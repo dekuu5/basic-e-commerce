@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - C:\xampp\htdocs\:/var/www/html  # تعديل هنا لربط مجلد الكود من الهوست بالحاوية
+      - D:\Programing\php\htdocs\:/var/www/html  # تعديل هنا لربط مجلد الكود من الهوست بالحاوية
     depends_on:
       - db
     restart: unless-stopped
@@ -16,7 +16,7 @@ services:
       DB_HOST: db
       DB_USER: root
       DB_PASSWORD: password
-      DB_NAME: users_app
+      DB_NAME: shop_db
 
   db:
     image: mysql:8.0
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: users_app
+      MYSQL_DATABASE: shop_db
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 5s
